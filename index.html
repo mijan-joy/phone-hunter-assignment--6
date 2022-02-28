@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Your Phone</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- header  -->
+    <header class="container">
+      <div class="header-style">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a href="" class="navbar-brand nav-logo">
+              <img
+                height="80px"
+                width="200px"
+                src="./assets/img/logo2.svg"
+                alt=""
+              />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div id="navbar-font" class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-link ms-3 me-3">Home</a>
+                <a href="#index.html" class="nav-link ms-3 me-3">About </a>
+                <a href="#index.html" class="nav-link ms-3 me-3"
+                  >Leatest Phone</a
+                >
+                <a href="#index.html" class="nav-link ms-3 me-3">Blog</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- header end -->
+    <!-- ====Search Area ===== -->
+    <main class="container" style="margin-top: -40px">
+      <section class="mt-3 mb-3">
+        <h1 class="text-center fw-bold text-success">Find Your Phone</h1>
+        <div class="col-md-6 mx-auto">
+          <div class="input-group">
+            <input
+              id="phone-input"
+              type="text"
+              class="form-control bg-light rounded"
+              placeholder="Search your phone..."
+              aria-label="Search"
+            />
+            <div class="input-group-append">
+              <button
+                id="phone-submit"
+                class="btn btn-outline-success"
+                type="button"
+                onclick="searchPhone()"
+                >Search</button
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ====Search Area End ===== -->
+      <!-- Phone Details Area -->
+      <section id="phone-details" class="container my-5"> </section>
+      <!-- search-result -->
+      <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 m-auto">
+      </div>
+    </main>
+
+    <!-- javacript file -->
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
