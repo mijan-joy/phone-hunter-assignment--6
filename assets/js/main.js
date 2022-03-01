@@ -1,15 +1,17 @@
 const searchPhone = () => {
   document.getElementById("search-result").textContent = "";
   document.getElementById("phone-details").textContent = "";
-
+  displayError("none");
   const searchValue = document.getElementById("phone-input").value;
 
   if (searchValue == "") {
     displayError("block");
-  } else if (searchResult() = null) {
-    notfound("block");
-    console.log(notfound);
-  } else {
+  }
+  // if (searchResult() = null) {
+  //   notfound("block");
+  //   console.log(notfound);
+  // }
+  else {
     displayError("none");
     displaySpinner("block");
     //   console.log(searchValue);
@@ -18,7 +20,7 @@ const searchPhone = () => {
     fetch(url)
       .then((Response) => Response.json())
       .then((data) => displayResult(data.data.slice(0, 20)));
-    // document.getElementById("phone-input")= "";
+    document.getElementById("phone-input").value = "";
   }
 };
 
@@ -31,7 +33,7 @@ const displayResult = (brands) => {
     const searchResult = document.getElementById("search-result");
     const div = document.createElement("div");
     div.innerHTML = `
-    <div class="card rounded">
+    <div class="card shadow p-5 alert-info" id="card">
             <img src="${brand.image}" class="card-img-top p-3" alt="..." />
             <div class="card-body">
             <h5 class="card-title  text-center">${brand.phone_name}</h5>
@@ -46,6 +48,7 @@ const displayResult = (brands) => {
             </div>
             
         </div>
+        
     `;
     searchResult.appendChild(div);
   }
@@ -60,7 +63,7 @@ const loadDetails = (id) => {
 };
 
 const setDetails = (slug) => {
-  console.log(slug.name);
+  // console.log(slug.name);
   const phoneDetails = document.getElementById("phone-details");
   phoneDetails.textContent = "";
   const div = document.createElement("div");
@@ -69,7 +72,9 @@ const setDetails = (slug) => {
   <div class="card mb-3 mx-auto col-md-9 p-1 shadow-lg">
   <div class="row g-0">
     <div class="col-md-4 my-auto">
-      <img src="${slug.image}" class="img-fluid rounded-start w-100" alt="..." />
+      <img src="${
+        slug.image
+      }" class="img-fluid rounded-start w-100" alt="..." />
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -96,10 +101,23 @@ const setDetails = (slug) => {
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>Chip Set:</strong><code> ${slug.mainFeatures.chipSet}</code><br />
-            <strong>SisplaySize:</strong><code> ${slug.mainFeatures.displaySize}</code><br />
-            <strong>Storage:</strong><code> ${slug.mainFeatures.storage}</code><br />
-            <strong>Memory:</strong><code> ${slug.mainFeatures.memory}</code><br />
+            <strong>Chip Set:</strong><code> ${
+              slug.mainFeatures.chipSet
+            }</code><br />
+            <strong>SisplaySize:</strong><code> ${
+              slug.mainFeatures.displaySize
+            }</code><br />
+            <strong>Storage:</strong><code> ${
+              slug.mainFeatures.storage
+            }</code><br />
+            <strong>Memory:</strong><code> ${
+              slug.mainFeatures.memory
+            }</code><br />
+            <strong>Release Date:</strong><code> ${
+              slug.mainFeatures.releaseDate
+                ? slug.mainFeatures.releaseDate
+                : "Not Found "
+            }</code><br />
             <strong>Brand:</strong><code> ${slug.brand}</code><br />
             
           </div>
@@ -125,10 +143,14 @@ const setDetails = (slug) => {
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body text-center">
-            <strong>Sensors:</strong><code><br/> ${slug.mainFeatures.sensors}</code><br />
+            <strong>Sensors:</strong><code><br/> ${
+              slug.mainFeatures.sensors
+            }</code><br />
             <strong>Others Features :</strong><br />
             <strong>W-Lan:</strong><code> ${slug.others.WLAN}</code><br />
-            <strong>Bluetooth:</strong><code> ${slug.others.Bluetooth}</code><br />
+            <strong>Bluetooth:</strong><code> ${
+              slug.others.Bluetooth
+            }</code><br />
             <strong>GPS:</strong><code> ${slug.others.GPS}</code><br />
             <strong>NFC:</strong><code> ${slug.others.NFC}</code><br />
             <strong>Radio:</strong><code> ${slug.others.Radio}</code><br />

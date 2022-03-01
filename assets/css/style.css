@@ -1,3 +1,7 @@
+body{
+    background-color: rgba(235, 235, 235, 0.24);
+}
+
 #spinner {
     display: none;
   }
@@ -7,4 +11,11 @@
   #notfound {
     display: none;
   }
-  
+  #loadMorebtn{
+      display: none;
+  }
+#card{
+    background-color: white;
+    border-radius: 20px;
+    
+}
