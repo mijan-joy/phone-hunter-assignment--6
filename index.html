@@ -67,18 +67,35 @@
                 class="btn btn-outline-success"
                 type="button"
                 onclick="searchPhone()"
-                >Search</button
               >
+                Search
+              </button>
             </div>
           </div>
         </div>
       </section>
+      <!-- spinner -->
+      <div id="spinner" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+      <div id="error" class="text-center text-danger fw-bold fs-4">
+        Please Enter phone name
+      </div>
+      <div id="notfound" class="text-center text-danger fw-bold fs-4">
+        Sorry!! Not Found.. please Search another
+      </div>
+
+      <!-- spinner -->
       <!-- ====Search Area End ===== -->
       <!-- Phone Details Area -->
-      <section id="phone-details" class="container my-5"> </section>
+      <section id="phone-details" class="container mx-auto my-5"></section>
       <!-- search-result -->
-      <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 m-auto">
-      </div>
+      <div
+        id="search-result"
+        class="row row-cols-1 row-cols-md-3 g-4 m-auto"
+      ></div>
     </main>
 
     <!-- javacript file -->
