@@ -6,12 +6,8 @@ const searchPhone = () => {
 
   if (searchValue == "") {
     displayError("block");
-  }
-  // if (searchResult() = null) {
-  //   notfound("block");
-  //   console.log(notfound);
-  // }
-  else {
+    notfound("none");
+  } else {
     displayError("none");
     displaySpinner("block");
     //   console.log(searchValue);
@@ -19,38 +15,38 @@ const searchPhone = () => {
     //   console.log(url);
     fetch(url)
       .then((Response) => Response.json())
+      // .then((data) => displayResult(data.data));
       .then((data) => displayResult(data.data.slice(0, 20)));
     document.getElementById("phone-input").value = "";
   }
 };
 
 const displayResult = (brands) => {
+  // console.log(displayResult);
   displaySpinner("none");
   //   console.log(phones);
-  for (const brand of brands) {
-    console.log(brand);
-
-    const searchResult = document.getElementById("search-result");
-    const div = document.createElement("div");
-    div.innerHTML = `
-    <div class="card shadow p-5 alert-info" id="card">
+  if (brands.length == 0) {
+    document.getElementById("notfound").style.display = "block";
+  } else {
+    for (const brand of brands) {
+      // console.log(brand);
+      const searchResult = document.getElementById("search-result");
+      const div = document.createElement("div");
+      div.innerHTML = `
+    <div class="card shadow p-2 alert-info" id="card">
             <img src="${brand.image}" class="card-img-top p-3" alt="..." />
             <div class="card-body">
+            <p class="card-text">
             <h5 class="card-title  text-center">${brand.phone_name}</h5>
             <h6 class="card-title  text-center">${brand.brand}</h6>
-            <h6 class="card-title  text-center">Model: ${brand.slug}</h6>
-            <p class="card-text"> </p>
-           
+             </p>
             <div class="mx-auto text-center"><button onclick="loadDetails('${brand.slug}')" type="button" class="btn btn-dark btn-sm ">See More</button>
             </div>
-            
-            
             </div>
-            
-        </div>
-        
-    `;
-    searchResult.appendChild(div);
+        </div>`;
+      document.getElementById("notfound").style.display = "none";
+      searchResult.appendChild(div);
+    }
   }
 };
 
@@ -69,7 +65,7 @@ const setDetails = (slug) => {
   const div = document.createElement("div");
 
   div.innerHTML = `
-  <div class="card mb-3 mx-auto col-md-9 p-1 shadow-lg">
+  <div class="card mb-3 mx-auto col-md-9 p-3 shadow-lg">
   <div class="row g-0">
     <div class="col-md-4 my-auto">
       <img src="${
@@ -116,7 +112,7 @@ const setDetails = (slug) => {
             <strong>Release Date:</strong><code> ${
               slug.mainFeatures.releaseDate
                 ? slug.mainFeatures.releaseDate
-                : "Not Found "
+                : "Not Avaiable "
             }</code><br />
             <strong>Brand:</strong><code> ${slug.brand}</code><br />
             
