@@ -1,4 +1,5 @@
 const searchPhone = () => {
+  document.getElementById("loadMorebtn").style.display = "none";
   document.getElementById("search-result").textContent = "";
   document.getElementById("phone-details").textContent = "";
   displayError("none");
@@ -45,6 +46,7 @@ const displayResult = (brands) => {
             </div>
         </div>`;
       document.getElementById("notfound").style.display = "none";
+      document.getElementById("loadMorebtn").style.display = "block";
       searchResult.appendChild(div);
     }
   }
@@ -163,6 +165,7 @@ const setDetails = (slug) => {
 </div>
   `;
   phoneDetails.append(div);
+  window.scrollTo(0, 0);
 };
 const displaySpinner = (condition) => {
   document.getElementById("spinner").style.display = condition;
